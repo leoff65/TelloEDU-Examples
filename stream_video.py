@@ -15,7 +15,8 @@ def run_tello_video(drone):
     """For use in main with djitellopy tello object"""
     while True:
         frame = drone.get_frame_read().frame
-        cv2.imshow("Frame", frame)
+        img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        cv2.imshow("Frame", img)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     cv2.destroyAllWindows()
